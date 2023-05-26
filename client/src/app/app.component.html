@@ -1,0 +1,19 @@
+<h1>Search for books by title</h1>
+
+<div>
+  <!-- when key is released, return the full value of the input field -->
+  <input type="text" size="30" #title (keyup)="keypressed(title.value)" placeholder="type your search here">
+</div>
+
+<div *ngIf="books$ | async as books, else noBooks">
+  <h2>Books found:</h2>
+  <ul *ngFor="let b of books">
+    <li><a href="http//:localhost:8080/book/id/{{ b.bookID }}">
+      <code>{{ b.title }}</code>
+    </a></li>
+  </ul>
+</div>
+
+<ng-template #noBooks>
+  <h2>No books found</h2>
+</ng-template>
